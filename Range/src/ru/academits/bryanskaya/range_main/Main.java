@@ -10,47 +10,47 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Введите начальное число диапазона:");
-        double from = scanner.nextDouble();
+        double from1 = scanner.nextDouble();
 
         System.out.println("Введите конечное число диапазона:");
-        double to = scanner.nextDouble();
+        double to1 = scanner.nextDouble();
 
         System.out.println("Введите число для проверки:");
         double numberToCheck = scanner.nextDouble();
 
-        Range range = new Range(from, to);
+        Range range1 = new Range(from1, to1);
 
-        if (range.isInside(numberToCheck)) {
+        if (range1.isInside(numberToCheck)) {
             System.out.println("Число в пределах диапазона.");
         } else {
             System.out.println("Число за пределами диапазона.");
         }
 
-        System.out.println("Длина диапазона от " + from + " до " + to + " = " + range.getLength());
+        System.out.println("Длина диапазона от " + from1 + " до " + to1 + " = " + range1.getLength());
 
-        range.setFrom(4);
-        range.setTo(12);
+        range1.setFrom(4);
+        range1.setTo(12);
 
-        double newFrom = range.getFrom();
-        double newTo = range.getTo();
+        double newFrom = range1.getFrom();
+        double newTo = range1.getTo();
 
-        System.out.println("Длина диапазона от " + newFrom + " до " + newTo + " = " + range.getLength());
+        System.out.println("Длина диапазона от " + newFrom + " до " + newTo + " = " + range1.getLength());
 
         System.out.println("Введите начальное число второго диапазона:");
-        double otherFrom = scanner.nextDouble();
+        double from2 = scanner.nextDouble();
 
         System.out.println("Введите конечное число второго диапазона:");
-        double otherTo = scanner.nextDouble();
+        double to2 = scanner.nextDouble();
 
-        Range otherRange = new Range(otherFrom, otherTo);
+        Range range2 = new Range(from2, to2);
 
-        Range intersection = range.getIntersection(otherRange);
+        Range intersection = range1.getIntersection(range2);
         System.out.println("Пересечение двух диапазонов: " + intersection);
 
-        Range[] union = range.getUnion(otherRange);
+        Range[] union = range1.getUnion(range2);
         System.out.println("Объединение двух диапазонов: " + Arrays.toString(union));
 
-        Range[] difference = range.getDifference(otherRange);
+        Range[] difference = range1.getDifference(range2);
         System.out.println("Разность двух диапазонов: " + Arrays.toString(difference));
     }
 }
