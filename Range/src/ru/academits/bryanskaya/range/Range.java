@@ -34,12 +34,12 @@ public class Range {
     }
 
     public String toString() {
-        return "[" + from + ";" + to + "]";
+        return "[" + from + "; " + to + "]";
     }
 
-    public Range getIntersection(Range otherRange) {
-        double intersectionFrom = Math.max(from, otherRange.from);
-        double intersectionTo = Math.min(to, otherRange.to);
+    public Range getIntersection(Range range) {
+        double intersectionFrom = Math.max(from, range.from);
+        double intersectionTo = Math.min(to, range.to);
 
         if (intersectionFrom < intersectionTo) {
             return new Range(intersectionFrom, intersectionTo);
@@ -48,47 +48,51 @@ public class Range {
         return null;
     }
 
-    public Range[] getUnion(Range otherRange) {
-        if (from <= otherRange.to && otherRange.from <= to) {
-            double unionFrom = Math.min(otherRange.from, from);
-            double unionTo = Math.max(otherRange.to, to);
+    public Range[] getUnion(Range range) {
+        if (from <= range.to && range.from <= to) {
+            double unionFrom = Math.min(range.from, from);
+            double unionTo = Math.max(range.to, to);
 
             return new Range[]{new Range(unionFrom, unionTo)};
         }
 
-        if (from < otherRange.from) {
+        if (from < range.from) {
             return new Range[]{
                     new Range(from, to),
-                    new Range(otherRange.from, otherRange.to)
-            };
-        } else {
-            return new Range[]{
-                    new Range(otherRange.from, otherRange.to),
-                    new Range(from, to)
+                    new Range(range.from, range.to)
             };
         }
+
+        return new Range[]{
+                new Range(range.from, range.to),
+                new Range(from, to)
+        };
     }
 
-    public Range[] getDifference(Range otherRange) {
+    public Range[] getDifference(Range range) {
         // Если отрезки не пересекаются, возвращается первый диапазон
-        if (otherRange.from > to || otherRange.to < from) {
+        if (range.from > to || range.to < from) {
             return new Range[]{new Range(from, to)};
         }
+
         // Если второй диапазон полностью находится в пределах первого, возвращается разность из двух диапазонов
-        if (otherRange.from > from && otherRange.to < to) {
+        if (range.from > from && range.to < to) {
             return new Range[]{
-                    new Range(from, otherRange.from),
-                    new Range(otherRange.to, to)
+                    new Range(from, range.from),
+                    new Range(range.to, to)
             };
         }
+
         // Если начало второго диапазона в пределах первого, возвращается разность диапазонов слева
-        if (otherRange.from > from && otherRange.from <= to) {
-            return new Range[]{new Range(from, otherRange.from)};
+        if (range.from > from && range.from <= to) {
+            return new Range[]{new Range(from, range.from)};
         }
+
         // Если конец второго диапазона в пределах первого, возвращается разность диапазонов справа
-        if (otherRange.to < to && otherRange.to >= from) {
-            return new Range[]{new Range(otherRange.to, to)};
+        if (range.to < to && range.to >= from) {
+            return new Range[]{new Range(range.to, to)};
         }
+
         // Если второй диапазон полностью перекрывает первый, возвращается пустой массив
         return new Range[0];
     }
