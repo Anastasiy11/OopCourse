@@ -11,25 +11,27 @@ public class Rectangle implements Shape {
         this.height = height;
     }
 
-    public double getSide1() {
+    @Override
+    public double getWidth() {
         return width;
     }
 
-    public double getSide2() {
-        return height;
-    }
-
-    public void setSide1(double width) {
+    public void setWidth(double width) {
         this.width = width;
     }
 
-    public void setSide2(double height) {
+    @Override
+    public double getHeight() {
+        return height;
+    }
+
+    public void setHeight(double height) {
         this.height = height;
     }
 
     @Override
     public String toString() {
-        return "Rectangle " + "Width: " + width + " Height: " + height + " Area: " + getArea() + " Perimeter: " + getPerimeter();
+        return "Rectangle Width: " + width + " Height: " + height + " Area: " + getArea() + " Perimeter: " + getPerimeter();
     }
 
     @Override
@@ -49,17 +51,13 @@ public class Rectangle implements Shape {
 
     @Override
     public int hashCode() {
-        return Objects.hash(width, height);
-    }
+        final int prime = 35;
+        int hash = 1;
 
-    @Override
-    public double getWidth() {
-        return width;
-    }
+        hash = prime * hash + Double.hashCode(width);
+        hash = prime * hash + Double.hashCode(height);
 
-    @Override
-    public double getHeight() {
-        return height;
+        return hash;
     }
 
     @Override

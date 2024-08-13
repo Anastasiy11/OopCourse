@@ -1,25 +1,23 @@
 package ru.academits.bryanskaya.shapes;
 
-import java.util.Objects;
-
 public class Square implements Shape {
-    private double side;
+    private double sideLength;
 
     public Square(double side) {
-        this.side = side;
+        this.sideLength = side;
     }
 
-    public double getSide() {
-        return side;
+    public double getSideLength() {
+        return sideLength;
     }
 
-    public void setSide(double side) {
-        this.side = side;
+    public void setSideLength(double sideLength) {
+        this.sideLength = sideLength;
     }
 
     @Override
     public String toString() {
-        return "Square " + "Side length: " + side + " Area: " + getArea() + " Perimeter: " + getPerimeter();
+        return "Square Side length: " + sideLength + " Area: " + getArea() + " Perimeter: " + getPerimeter();
     }
 
     @Override
@@ -34,31 +32,36 @@ public class Square implements Shape {
 
         Square s = (Square) o;
 
-        return side == s.side;
+        return sideLength == s.sideLength;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(side);
+        final int prime = 35;
+        int hash = 1;
+
+        hash = prime * hash + Double.hashCode(sideLength);
+
+        return hash;
     }
 
     @Override
     public double getWidth() {
-        return side;
+        return sideLength;
     }
 
     @Override
     public double getHeight() {
-        return side;
+        return sideLength;
     }
 
     @Override
     public double getArea() {
-        return Math.pow(side, 2);
+        return sideLength * sideLength;
     }
 
     @Override
     public double getPerimeter() {
-        return side * 4;
+        return sideLength * 4;
     }
 }

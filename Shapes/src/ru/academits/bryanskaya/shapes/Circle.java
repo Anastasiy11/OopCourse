@@ -19,7 +19,7 @@ public class Circle implements Shape {
 
     @Override
     public String toString() {
-        return "Circle " + " Radius: " + radius + " Area: " + getArea() + " Perimeter: " + getPerimeter();
+        return "Circle Radius: " + radius + " Area: " + getArea() + " Perimeter: " + getPerimeter();
     }
 
     @Override
@@ -39,7 +39,12 @@ public class Circle implements Shape {
 
     @Override
     public int hashCode() {
-        return Objects.hash(radius);
+        final int prime = 35;
+        int hash = 1;
+
+        hash = prime * hash + Double.hashCode(radius);
+
+        return hash;
     }
 
     @Override
@@ -54,7 +59,7 @@ public class Circle implements Shape {
 
     @Override
     public double getArea() {
-        return Math.PI * Math.pow(radius, 2);
+        return Math.PI * (radius * radius);
     }
 
     @Override
