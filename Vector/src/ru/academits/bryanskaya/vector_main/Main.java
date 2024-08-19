@@ -5,7 +5,7 @@ import ru.academits.bryanskaya.vector.Vector;
 public class Main {
     public static void main(String[] args) {
         // Заполнение вектора значениями из массива
-        Vector vector1 = new Vector(new double[]{1, 3, 2});
+        Vector vector1 = new Vector(new double[]{1, 2, 3});
         System.out.println("Компоненты вектора: " + vector1);
 
         // Получение размерности вектора
@@ -17,7 +17,7 @@ public class Main {
         System.out.println("Копия вектора: " + vector3);
 
         // Если длина массива < n, заполнение остальных компонент нулями
-        Vector vector4 = new Vector(4, new double[]{1, 2, 3});
+        Vector vector4 = new Vector(6, new double[]{1, 2, 3});
         System.out.println("Компоненты вектора: " + vector4);
 
         // Возвращение размерности вектора
@@ -45,11 +45,11 @@ public class Main {
         System.out.println("Длина вектора: " + vector3.getLength());
 
         // Прибавление к вектору другого вектора
-        vector3.add(new Vector(new double[]{1, 2, 3, 4}));
+        vector3.add(new Vector(new double[]{1, 2, 3}));
         System.out.println("Результат сложения вектора с другим вектором: " + vector3);
 
         // Вычитание из вектора другого вектора
-        vector3.subtract(new Vector(new double[]{2, 2, 4}));
+        vector3.subtract(new Vector(new double[]{2, 2}));
         System.out.println("Результат вычитания из вектора другого вектора: " + vector3);
 
         // Умножение вектора на скаляр
