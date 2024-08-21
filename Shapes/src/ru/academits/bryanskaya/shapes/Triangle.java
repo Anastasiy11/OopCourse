@@ -1,7 +1,5 @@
 package ru.academits.bryanskaya.shapes;
 
-import java.util.Objects;
-
 public class Triangle implements Shape {
     private double x1;
     private double y1;
@@ -113,23 +111,15 @@ public class Triangle implements Shape {
         return Math.max(y1, Math.max(y2, y3)) - Math.min(y1, Math.min(y2, y3));
     }
 
-    public double getSideABLength() {
+    private double getSideLength(double x1, double x2, double y1, double y2) {
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-    }
-
-    public double getSideBCLength() {
-        return Math.sqrt(Math.pow(x3 - x2, 2) + Math.pow(y3 - y2, 2));
-    }
-
-    public double getSideACLength() {
-        return Math.sqrt(Math.pow(x3 - x1, 2) + Math.pow(y3 - y1, 2));
     }
 
     @Override
     public double getArea() {
-        double sideABLength = getSideABLength();
-        double sideBCLength = getSideBCLength();
-        double sideACLength = getSideACLength();
+        double sideABLength = getSideLength(x1, x2, y1, y2);
+        double sideBCLength = getSideLength(x2, x3, y2, y3);
+        double sideACLength = getSideLength(x1, x3, y1, y3);
 
         double triangleHalfPerimeter = (sideABLength + sideBCLength + sideACLength) / 2;
 
@@ -139,6 +129,6 @@ public class Triangle implements Shape {
 
     @Override
     public double getPerimeter() {
-        return getSideABLength() + getSideBCLength() + getSideACLength();
+        return getSideLength(x1, x2, y1, y2) + getSideLength(x2, x3, y2, y3) + getSideLength(x1, x3, y1, y3);
     }
 }

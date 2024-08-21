@@ -1,7 +1,7 @@
 package ru.academits.bryanskaya.shapes_main;
 
-import ru.academits.bryanskaya.comparators.ShapeAreaComparator;
-import ru.academits.bryanskaya.comparators.ShapePerimeterComparator;
+import ru.academits.bryanskaya.shapes_comparators.ShapeAreaComparator;
+import ru.academits.bryanskaya.shapes_comparators.ShapePerimeterComparator;
 import ru.academits.bryanskaya.shapes.*;
 
 import java.util.Arrays;

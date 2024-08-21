@@ -3,8 +3,8 @@ package ru.academits.bryanskaya.shapes;
 public class Square implements Shape {
     private double sideLength;
 
-    public Square(double side) {
-        this.sideLength = side;
+    public Square(double sideLength) {
+        this.sideLength = sideLength;
     }
 
     public double getSideLength() {

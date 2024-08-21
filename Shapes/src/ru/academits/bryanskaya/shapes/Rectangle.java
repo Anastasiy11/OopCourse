@@ -1,7 +1,5 @@
 package ru.academits.bryanskaya.shapes;
 
-import java.util.Objects;
-
 public class Rectangle implements Shape {
     private double width;
     private double height;

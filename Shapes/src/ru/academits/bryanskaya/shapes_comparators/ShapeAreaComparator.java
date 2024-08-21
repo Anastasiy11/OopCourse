@@ -1,4 +1,4 @@
-package ru.academits.bryanskaya.comparators;
+package ru.academits.bryanskaya.shapes_comparators;
 
 import ru.academits.bryanskaya.shapes.Shape;
 
