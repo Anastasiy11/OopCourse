@@ -62,12 +62,12 @@ public class Main {
         Vector v1 = new Vector(new double[]{1, 2, 3});
         Vector v2 = new Vector(new double[]{2, 3, 4, 5});
 
-        Vector sum = Vector.getSum(v1, v2);
+        Vector sum = Vector.getSum(v2, v1);
         System.out.println("Сумма двух векторов: " + sum);
 
         // Вычитание двух векторов
-        Vector diff = Vector.getDifference(v2, v1);
-        System.out.println("Разность двух векторов: " + diff);
+        Vector difference = Vector.getDifference(v2, v1);
+        System.out.println("Разность двух векторов: " + difference);
 
         // Скалярное произведение двух векторов
         double scalarProduct = Vector.getScalarProduct(v1, v2);
