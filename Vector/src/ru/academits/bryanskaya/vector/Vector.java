@@ -45,59 +45,40 @@ public class Vector {
     // Преобразование значений массива в строку
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder("{");
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append('{');
+        stringBuilder.append(components[0]);
 
-        for (int i = 0; i < components.length; i++) {
+        for (int i = 1; i < components.length; i++) {
+            stringBuilder.append(", ");
             stringBuilder.append(components[i]);
-
-            if (i < components.length - 1) {
-                stringBuilder.append(", ");
-            }
         }
 
-        stringBuilder.append("}");
+        stringBuilder.append('}');
 
         return stringBuilder.toString();
     }
 
     // Прибавление к вектору второго вектора
     public void add(Vector vector) {
-        double[] result;
-
-        if (components.length != vector.getSize()) {
-            int maxSize = Math.max(components.length, vector.getSize());
-            result = Arrays.copyOf(components, maxSize);
-        } else {
-            result = components;
+        if (components.length < vector.getSize()) {
+            components = Arrays.copyOf(components, vector.getSize());
         }
 
-        for (int i = 0; i < result.length; i++) {
-            if (i < vector.getSize()) {
-                result[i] += vector.components[i];
-            }
+        for (int i = 0; i < vector.getSize(); i++) {
+            components[i] += vector.components[i];
         }
-
-        components = result;
     }
 
     // Вычитание из вектора другого вектора
     public void subtract(Vector vector) {
-        double[] result;
-
-        if (components.length != vector.getSize()) {
-            int maxSize = Math.max(components.length, vector.getSize());
-            result = Arrays.copyOf(components, maxSize);
-        } else {
-            result = components;
+        if (components.length < vector.getSize()) {
+            components = Arrays.copyOf(components, vector.getSize());
         }
 
-        for (int i = 0; i < result.length; i++) {
-            if (i < vector.getSize()) {
-                result[i] -= vector.components[i];
-            }
+        for (int i = 0; i < vector.getSize(); i++) {
+            components[i] -= vector.components[i];
         }
-
-        components = result;
     }
 
     // Умножение вектора на скаляр
@@ -126,7 +107,7 @@ public class Vector {
     // Получение компонента вектора по индексу
     public double getComponent(int index) {
         if (index < 0 || index >= components.length) {
-            throw new IllegalArgumentException("Индекс: " + index + " выходит за границы вектора.");
+            throw new IndexOutOfBoundsException("Индекс: " + index + " выходит за границы вектора. Допустимые границы: от 0 до " + (components.length - 1));
         }
 
         return components[index];
@@ -135,7 +116,7 @@ public class Vector {
     // Изменение компонента вектора по индексу
     public void setComponent(int index, double newValue) {
         if (index < 0 || index >= components.length) {
-            throw new IllegalArgumentException("Индекс: " + index + " выходит за границы вектора.");
+            throw new IndexOutOfBoundsException("Индекс: " + index + " выходит за границы вектора. Допустимые границы: от 0 до " + (components.length - 1));
         }
 
         components[index] = newValue;
