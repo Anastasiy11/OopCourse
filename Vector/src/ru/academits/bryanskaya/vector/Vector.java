@@ -50,10 +50,10 @@ public class Vector {
         stringBuilder.append('{');
 
         for (double component : components) {
-            stringBuilder.append(component).append(",");
+            stringBuilder.append(component).append(", ");
         }
 
-        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1).deleteCharAt(stringBuilder.length() - 1);
         stringBuilder.append('}');
 
         return stringBuilder.toString();
